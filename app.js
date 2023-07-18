@@ -35,11 +35,9 @@ slider.addEventListener("click", function() {
 
 // text changer
 let textArray = document.querySelectorAll(".text-changer");
-let content;
 fetch("content.json")
   .then(res => res.json())
-  .then(text => content = text)
-console.log(content);
+  .then(text => console.log(text))
 
 
 // to contacts
