@@ -1,4 +1,4 @@
-// to top
+// to top arrow
 let btnToTop = document.querySelector(".arrow-button");
 let header = document.querySelector("header");
 btnToTop.addEventListener("click", function() {
@@ -18,7 +18,7 @@ window.addEventListener("scroll", function() {
   }
 })
 
-// slider
+// slider movement
 let language = false;
 let slider = document.querySelector(".slider");
 let point = document.querySelector(".point");
@@ -32,10 +32,12 @@ slider.addEventListener("click", function() {
   sliderTextEN.classList.toggle("point-invisible");
 })
 
-// text changer
+// text changer slider
 let textArray = document.querySelectorAll(".text-changer");
 let content = [
   [
+    "Text copied<br>to clipboard",
+
     "Name:",
     "Birthday:",
     "Lisetskyi Ivan",
@@ -83,11 +85,12 @@ let content = [
     "UNRELEASED",
 
     "Contacts",
-    "LinkedIn account",
-    "GitHub account",
-    "Djinni account"
+    "WhatsApp account",
+    "LinkedIn account"
   ],
   [
+    "Текст скопiйовано<br>до буферу обмiну",
+
     "Ім'я:",
     "Д/Н:",
     "Лісецький Іван",
@@ -135,9 +138,8 @@ let content = [
     "НЕВИПУЩЕНИЙ",
     
     "Контакти",
-    "акаунт LinkedIn",
-    "акаунт GitHub",
-    "акаунт Djinni"
+    "Акаунт WhatsApp",
+    "Акаунт LinkedIn"
   ]
 ] 
 
@@ -153,7 +155,7 @@ slider.addEventListener("click", function() {
   }
 })
 
-// to contacts
+// to contacts button
 let btnToContacts = document.querySelector("button");
 let footer = document.querySelector("footer");
 btnToContacts.addEventListener("click", function() {
@@ -161,4 +163,40 @@ btnToContacts.addEventListener("click", function() {
     top: footer.getBoundingClientRect().bottom,
     behavior: "smooth"
   });
+})
+
+// contacts copy to clipboard on click
+let copyText = document.querySelectorAll(".copy-text");
+let copyRow = document.querySelectorAll(".copy-row");
+let successTextBar = document.querySelector(".copy-success-text");
+let successTextBarTimer;
+for(let i = 0; i < copyRow.length; i++) {
+  copyRow[i].addEventListener("click", function() {
+    navigator.clipboard.writeText(copyText[i].innerHTML)
+      .then(() => {
+        clearTimeout(successTextBarTimer);
+        if (!successTextBar.classList.contains("copy-success-visible")){
+          successTextBar.classList.toggle("copy-success-visible");
+        }
+        successTextBarTimer = setTimeout(() => {
+          successTextBar.classList.toggle("copy-success-visible");
+        }, 2000);
+      })
+      .catch ((err) => {
+        clearTimeout(successTextBarTimer);
+        if (!successTextBar.classList.contains("copy-success-visible")){
+          successTextBar.classList.toggle("copy-success-visible");
+        }
+        successTextBar.innerHTML = "ERROR"
+        successTextBarTimer = setTimeout(() => {
+          successTextBar.classList.toggle("copy-success-visible");
+        }, 2000);
+      })
+  })
+}
+successTextBar.addEventListener("click", function() {
+  clearTimeout(successTextBarTimer);
+  if (successTextBar.classList.contains("copy-success-visible")){
+    successTextBar.classList.toggle("copy-success-visible");
+  }
 })

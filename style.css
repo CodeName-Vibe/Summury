@@ -1,8 +1,12 @@
+/* General */
 * {
   box-sizing: border-box;
   margin: 0;
 }
-h1,h2,h3,h4,h5,h6,p,a,button {
+::selection {
+  background-color: rgba(224, 95, 95, 0.493);
+}
+h1,h2,h3,h4,h5,h6,p,a,button,textarea {
   font-family: 'Ubuntu', sans-serif;
   color: #40364C;
 }
@@ -10,11 +14,14 @@ a {
   text-decoration: none;
 }
 body {
-  margin: 0 auto;
   user-select: none;
   background-color: #DFD4E3;
 }
 
+/* Building */
+.container {
+  max-width: 1920px;
+}
 .row {
   display: flex;
 }
@@ -23,6 +30,7 @@ body {
   flex-direction: column;
 }
 
+/* Flex */
 .center {
   display: flex;
   justify-content: center;
@@ -41,34 +49,35 @@ body {
   justify-content: space-between;
 }
 
+/* Fonts */
 h1 {
   font-size: 48px;
-  font-weight: 500;
+  font-weight: bold;
   color: white;
+  transition: transform 22s ease-in;
 }
 h2 {
   padding: 10px 20px;
   text-align: end;
   font-size: 50px;
-  font-weight: 500;
+  font-weight: bold;
 }
 h3 {
-  padding: 10px 20px;
+  padding: 10px 0;
   font-size: 50px;
   font-weight: 400;
 }
 h4 {
   font-size: 40px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
-
-
+/* To-top arrow */
 .arrow-button {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  z-index: 5;
+  z-index: 6;
   width: 110px;
   height: 110px;
   background-color: #813A4C;
@@ -98,14 +107,50 @@ h4 {
   opacity: 1;
 }
 
+/* Copy success */
+.copy-success {
+  pointer-events: none;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  bottom: 20px;
+}
+.copy-success-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.copy-success-text {
+  pointer-events: none;
+  opacity: 0;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+  color: #523a4e;
+  background-color: #d4afd1;
+  border: solid #523a4e 6px;
+  border-radius: 10px;
+  padding: 30px;
+  transition: opacity 1s ease-in-out;
+}
+.copy-success-visible {
+  pointer-events: all;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out
+}
 
-
+/* Header */
 header {
+  display: flex;
+  justify-content: center;
   height: 363px;
   background-color: #A395B9;
   border-bottom: #6B5C7D solid 47px;
 }
 .header-box {
+  width: 100%;
   padding: 0 200px;
   height: 100%;
 }
@@ -113,6 +158,7 @@ header>.header-box>.row {
   height: 244px;
 }
 
+/* Header photo */
 .photo-bg {
   position: relative;
   width: 343px;
@@ -131,6 +177,21 @@ header>.header-box>.row {
   background-size: cover;
 }
 
+/* Header col 2,3 */
+.header-2-large-phone-col {
+  width: 100%;
+  height: 100%;
+}
+.header-2-large-phone-row {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+.margin {
+  margin: 0 50px;
+}
+
+/* Slider */
 .slider {
   cursor: pointer;
   position: relative;
@@ -154,10 +215,16 @@ header>.header-box>.row {
   font-weight: bold;
   transition: all 0.36s ease-in-out;
 }
+.slider-text-ua::before {
+  content: "Українська";
+}
 .slider-text-ua {
   font-size: 18px;
   top: 35%;
   left: 12%;
+}
+.slider-text-en::before {
+  content: "English";
 }
 .slider-text-en {
   font-size: 24px;
@@ -175,6 +242,7 @@ header>.header-box>.row {
   scale: 0;
 }
 
+/* Contacts button */
 button {
   cursor: pointer;
   width: 188px;
@@ -191,9 +259,7 @@ button:hover {
   background-color: #692e3c;
 }
 
-
-
-
+/* Headline */
 .headline {
   display: flex;
   align-items: center;
@@ -204,33 +270,49 @@ button:hover {
   border-radius: 25px;
   margin: 56px 0;
 }
+.headline:hover h1 {
+  transform: scale(125%);
+}
+
+/* Main */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+[class*="main-"] {
+  width: 100%;
+}
+
+/* Stack / Skills / Languages */
 .main-0-box {
   padding: 0 250px 56px;
 } 
-.main-1-box {
-  background-color: #CEBDD7;
-  border-top: #6B5C7D solid 47px;
-  border-bottom: #6B5C7D solid 47px;
-  padding: 0 377px 56px;
-} 
-.main-2-box {
-  padding: 0 0 58px;
+.main-0-box .headline {
+  margin: 40px 0;
 }
-
-
-
-
 .start {
   text-align: end;
   padding-right: 20px;
 }
-.main-0-box .headline {
-  margin: 40px 0;
+
+/* Educations */
+.main-1-box {
+  display: flex;
+  justify-content: center;
+  background-color: #CEBDD7;
+  border-top: #6B5C7D solid 47px;
+  border-bottom: #6B5C7D solid 47px;
+} 
+.main-1-box .container {
+  padding: 0 377px 56px;
+  width: 100%;
 }
-
-
-
-
+/* Education cards */
+.card-row {
+  width: 100%;
+  justify-content: space-around;
+}
 .card {
   width: 352px;
   height: 352px;
@@ -274,25 +356,19 @@ button:hover {
   transition-delay: 0.18s;
   opacity: 0;
 }
-
-.card-row {
-  width: 100%;
-  justify-content: space-around;
-}
-
+/* Education fonts */
 [class*="education-"] {
   text-align: center;
 }
 .education-name {
   font-size: 38px;
-  font-weight: 500;
+  font-weight: bold;
 }
 .card-back .education-name {
   padding: 15px;
 }
 .education-type {
   font-size: 32px;
-  font-weight: 500;
 }
 .education-grade {
   font-size: 48px;
@@ -302,26 +378,33 @@ button:hover {
   font-size: 40px;
 }
 
-
-
+/* Experience */
+.main-2-box {
+  padding: 0 0 58px;
+}
 .main-2-box .headline {
   margin: 56px 0 96px;
 }
-
-.experience-block {
+/* Experience building */
+.experience-container {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 485px;
   border-top: #6B5C7D solid 32px;
   border-bottom: #6B5C7D solid 32px;
+  background-color: #4f445c;
   margin-bottom: 70px;
 }
-
+.experience-block {
+  width: 100%;
+  height: 470px;
+}
+/* Experience image */
 .experience-image {
   position: relative;
   width: 60%;
   height: 100%;
 }
-
 .experience-hover-image {
   position: absolute;
   opacity: 0;
@@ -329,10 +412,10 @@ button:hover {
   height: 100%;
   background-color: rgba(0,0,0,0.4);
   font-size: 110px;
-  font-weight: 500;
+  font-weight: bold;
   color: rgba(255,255,255,0.4);
   text-align: center;
-  line-height: 420px;
+  line-height: 485px;
   letter-spacing: 50px;
   z-index: 4;
   transition: opacity 0.36s ease-in-out;
@@ -344,12 +427,11 @@ button:hover {
 .nda {
   letter-spacing: 22px;
 }
-/*  */
 [class*="experience-image-"] {
   width: 100%;
   height: 100%;
   background-position: top;
-  background-size: cover;
+  background-size: contain;
 }
 .experience-image-0 {
   background-image: url(assets/experience/sites.svg);
@@ -357,7 +439,7 @@ button:hover {
 .experience-image-1 {
   background-image: url(assets/experience/nda.svg);
 }
-
+/* Experience text */
 [class*="experience-text-"] {
   position: relative;
   width: 40%;
@@ -371,7 +453,6 @@ button:hover {
 .experience-text-1 {
   background-color: #1D1D30;
 }
-
 [class*="experience-text-"]>p {
   position: absolute;
   font-size: 45px;
@@ -396,7 +477,6 @@ button:hover {
   transform: rotate(-90deg) scale(0.75);
   left: -1%;
 }
-
 [class*="experience-hover-text"] {
   position: absolute;
   overflow: hidden;
@@ -421,7 +501,7 @@ button:hover {
 }
 [class*="experience-hover-text"] p {
   font-size: 40px;
-  font-weight: 500;
+  font-weight: bold;
 }
 .experience-hover-text-0 p {
   color: white;
@@ -435,24 +515,31 @@ button:hover {
   align-items: center;
 }
 
-
-
+/* Footer */
 footer {
   width: 100%;
   height: 590px;
   background-color: #A395B9;
   border-top: #6B5C7D solid 47px;
 }
+footer p {
+  width: fit-content;
+  font-size: 40px;
+}
+.contact {
+  padding: 10px 35px;
+}
+.contact > .row {
+  cursor: pointer;
+  align-items: center;
+}
 .footer-bg-icon {
   width: 67px;
   height: 67px;
   background-color: #9D4F63;
   border-radius: 100%;
-  margin: 0 31px 17px 96px;
+  margin-right: 31px;
   transition: all 0.36s ease-in-out;
-}
-footer a:hover .footer-bg-icon {
-  background-color: #692e3c;
 }
 [class*="footer-icon-"] {
   width: 60%;
@@ -461,30 +548,1069 @@ footer a:hover .footer-bg-icon {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.contact > .row:hover .footer-bg-icon {
+  background-color: #692e3c;
+}
+/* Footer icons */
 .footer-icon-0 {
   background-image: url(assets/footer/phone.svg);
 }
 .footer-icon-1 {
-  background-image: url(assets/footer/email.svg);
-}
-.footer-icon-2 {
   background-image: url(assets/footer/telegram.svg);
 }
+.footer-icon-2 {
+  filter: invert(100%);
+  background-image: url(assets/footer/whatsapp.svg);
+}
 .footer-icon-3 {
-  background-image: url(assets/footer/linkedin.svg);
+  background-image: url(assets/footer/email.svg);
 }
 .footer-icon-4 {
   background-image: url(assets/footer/github.svg);
 }
 .footer-icon-5 {
-  background-image: url(assets/footer/djinni.svg);
+  background-image: url(assets/footer/linkedin.svg);
 }
-footer p {
-  width: 438px;
-  font-size: 40px;
-  font-weight: 500;
-  user-select: text;
+
+/* Desktop */
+@media(max-width: 1919px) {
+  /* Building */
+  .container {
+    max-width: 1440px;
+  }
+
+  /* Fonts */
+  h1 {
+    font-size: 40px;
+  }
+  h2,h3 {
+    font-size: 42px;
+  }
+  h4 {
+    font-size: 34px;
+  }
+
+  /* To-top arrow */
+  .arrow-button {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Header */
+  header {
+    height: 325px;
+    border-width: 40px;
+  }
+  .header-box {
+    padding: 0 150px;
+  }
+  header>.header-box>.row {
+    height: 230px;
+  }
+
+  /* Header photo */
+  .photo-bg {
+    width: 310px;
+    border-radius: 40px 40px 0 0;
+  }
+  .photo {
+    inset: 40px 0 0 40px;
+    width: 230px;
+    height: 290px;
+  }
+
+  /* Header col 2,3 */
+  .margin {
+    margin: 0 30px;
+  }
+
+  /* Slider */
+  .slider {
+    width: 178px;
+    height: 58px;
+  }
+  .slider .point {
+    width: 42px;
+    height: 42px;
+  }
+  .slider-text-ua {
+    top: 32%;
+    left: 11%;
+  }
+  .slider-text-en {
+    top: 28%;
+  }
+  .slider-inactive {
+    right: calc(95% - 42px);
+  }
+
+  /* Contacts button */
+  button {
+    width: 178px;
+    height: 58px;
+    font-size: 22px;
+  }
+
+  /* Headline */
+  .headline {
+    width: 500px;
+    height: 90px;
+    margin: 46px 0;
+  }
+
+  /* Stack / Skills / Languages */
+  .main-0-box {
+    padding: 0 185px 46px;
+  } 
+  .main-0-box .headline {
+    margin: 36px 0;
+  }
+  .start {
+    padding-right: 16px;
+  }
+
+  /* Educations */
+  .main-1-box {
+    border-top-width: 40px;
+    border-bottom-width: 40px;
+  } 
+  .main-1-box .container {
+    padding: 0 180px 46px;
+  }
+  /* Education cards */
+  .card {
+    width: 320px;
+    height: 320px;
+  }
+  .card-bg {
+    border-radius: 20px;
+  }
+  /* Education fonts */
+  .education-name {
+    font-size: 34px;
+  }
+  .card-back .education-name {
+    padding: 12px;
+  }
+  .education-type {
+    font-size: 30px;
+  }
+  .education-grade {
+    font-size: 42px;
+  }
+  .education-date {
+    font-size: 36px;
+  }
+
+  /* Experience */
+  .main-2-box {
+    padding: 0 0 32px;
+  }
+  .main-2-box .headline {
+    margin: 46px 0 62px;
+  }
+  /* Experience building */
+  .experience-container {
+    border-top-width: 30px;
+    border-bottom-width: 30px;
+    margin-bottom: 50px;
+  }
+  .experience-block {
+    height: 356px;
+  }
+  /* Experience image */
+  .experience-hover-image {
+    font-size: 80px;
+    line-height: 356px;
+    letter-spacing: 35px;
+  }
+  /* delete after release */
+  .nda {
+    letter-spacing: 18px;
+  }
+  /*  */
+  /* Experience text */
+  [class*="experience-text-"]>p {
+    font-size: 40px;
+  }
+  .experience-text-0 > p {
+    right: 20%;
+  }
+  .experience-text-1 > p {
+    left: 27%;
+  }
+  .experience-text-0:hover > p {
+    right: -16%;
+  }
+  .experience-text-1:hover > p {
+    left: -7%;
+  }
+  [class*="experience-hover-text"] {
+    width: 400px;
+  }
+  [class*="experience-hover-text"] p {
+    font-size: 32px;
+  }
+
+  /* Footer */
+  footer {
+    height: 520px;
+    border-top-width: 40px;
+  }
+  footer p {
+    font-size: 35px;
+  }
+  .contact {
+    padding: 8px 30px;
+  }
+  .footer-bg-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 26px;
+  }
 }
-::selection {
-  background-color: rgba(224, 95, 95, 0.493);
+
+/* Laptop */
+@media(max-width: 1439px) {
+  /* Building */
+  .container {
+    max-width: 1024px;
+  }
+
+  /* Fonts */
+  h1 {
+    font-size: 35px;
+  }
+  h2,h3 {
+    font-size: 30px;
+  }
+  h4 {
+    font-size: 27px;
+  }
+
+  /* To-top arrow */
+  .arrow-button {
+    width: 90px;
+    height: 90px;
+  }
+
+  /* Copy success */
+  .copy-success-text {
+    font-size: 22px;
+    border-width: 5px;
+    padding: 25px;
+  }
+
+  /* Header */
+  header {
+    height: 255px;
+    border-width: 35px;
+  }
+  .header-box {
+    padding: 0 75px;
+  }
+  header>.header-box>.row {
+    height: 180px;
+  }
+  /* Header photo */
+  .photo-bg {
+    width: 270px;
+    border-radius: 35px 35px 0 0;
+  }
+  .photo {
+    inset: 35px 0 0 35px;
+    width: 200px;
+    height: 240px;
+  }
+  /* Header col 2,3 */
+  .margin {
+    margin: 0 21px;
+  }
+
+  /* Slider */
+  .slider {
+    width: 120px;
+    height: 50px;
+  }
+  .slider .point {
+    width: 35px;
+    height: 35px;
+  }
+  .slider-text-ua::before {
+    content: "УКР";
+  }
+  .slider-text-ua {
+    font-size: 20px;
+    top: 28%;
+    left: 22%;
+  }
+  .slider-text-en::before {
+    content: "EN";
+  }
+  .slider-text-en {
+    font-size: 20px;
+    top: 28%;
+    right: 28%;
+  }
+  .slider-inactive {
+    right: calc(95% - 35px);
+  }
+
+  /* Contacts button */
+  button {
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  /* Headline */
+  .headline {
+    width: 400px;
+    height: 70px;
+    border-radius: 15px;
+    margin: 42px 0;
+  }
+
+  /* Stack / Skills / Languages */
+  .main-0-box {
+    padding: 0 75px 42px;
+  } 
+  .main-0-box .headline {
+    margin: 30px 0;
+  }
+  .start {
+    padding-right: 12px;
+  }
+
+  /* Educations */
+  .main-1-box {
+    border-top-width: 35px;
+    border-bottom-width: 35px;
+  } 
+  .main-1-box .container {
+    padding: 0 75px 42px;
+  }
+  /* Education cards */
+  .card {
+    width: 250px;
+    height: 250px;
+  }
+  .card-bg {
+    border-radius: 15px;
+  }
+  /* Education fonts */
+  .education-name {
+    font-size: 26px;
+  }
+  .card-back .education-name {
+    padding: 10px;
+  }
+  .education-type {
+    font-size: 22px;
+  }
+  .education-grade {
+    font-size: 36px;
+  }
+  .education-date {
+    font-size: 32px;
+  }
+
+  /* Experience */
+  .main-2-box {
+    padding: 0 0 16px;
+  }
+  .main-2-box .headline {
+    margin: 32px 0 42px;
+  }
+  /* Experience building */
+  .experience-container {
+    border-top-width: 26px;
+    border-bottom-width: 26px;
+    margin-bottom: 40px;
+  }
+  .experience-block {
+    height: 254px;
+  }
+  /* Experience image */
+  .experience-hover-image {
+    font-size: 60px;
+    line-height: 254px;
+    letter-spacing: 26px;
+  }
+  /* delete after release */
+  .nda {
+    letter-spacing: 10px;
+  }
+  /*  */
+  /* Experience text */
+  [class*="experience-text-"]>p {
+    font-size: 30px;
+  }
+  .experience-text-0 > p {
+    right: 18%;
+  }
+  .experience-text-1 > p {
+    left: 25%;
+  }
+  .experience-text-0:hover > p {
+    right: -20%;
+  }
+  .experience-text-1:hover > p {
+    left: -10%;
+  }
+  [class*="experience-hover-text"] {
+    width: 300px;
+  }
+  [class*="experience-hover-text"] p {
+    font-size: 24px;
+  }
+
+  /* Footer */
+  footer {
+    height: 420px;
+    border-top-width: 35px;
+  }
+  footer p {
+    font-size: 30px;
+  }
+  .contact {
+    padding: 5px 25px;
+  }
+  .footer-bg-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 18px;
+  }
+}
+
+/* Tablet */
+@media(max-width: 1023px) {
+  /* Building */
+  .container {
+    max-width: 768px;
+  }
+
+  /* Fonts */
+  h1 {
+    font-size: 25px;
+  }
+  h2,h3 {
+    padding: 5px 7px;
+    font-size: 23px;
+  }
+  h4 {
+    font-size: 22px;
+  }
+  
+  /* To-top arrow */
+  .arrow-button {
+    width: 80px;
+    height: 80px;
+    padding: 18px 20px;
+  }
+  .arrow-button:hover {
+    background-color: #813A4C;
+  }
+  .arrow-button:hover .arrow {
+    transform: scale(100%);
+  }
+  
+  /* Copy success */
+  .copy-success-text {
+    font-size: 18px;
+    border-width: 4px;
+    padding: 20px;
+  }
+  
+  /* Header */
+  header {
+    height: 210px;
+    border-width: 25px;
+  }
+  .header-box {
+    padding: 0 50px;
+  }
+  header>.header-box>.row {
+    height: 140px;
+  }
+  
+  /* Header photo */
+  .photo-bg {
+    width: 210px;
+  }
+  .photo {
+    inset: 25px 0 0 25px;
+    width: 160px;
+    height: 190px;
+  }
+  
+  /* Slider */
+  .slider {
+    width: 90px;
+    height: 40px;
+  }
+  .slider .point {
+    top: 6px;
+    width: 28px;
+    height: 28px;
+  }
+  .slider-text-ua {
+    font-size: 16px;
+    left: 16%;
+  }
+  .slider-text-en {
+    font-size: 16px;
+  }
+  .slider-active {
+    right: 8%;
+  }
+  .slider-inactive {
+    right: calc(95% - 28px);
+  }
+    
+  
+  /* Contacts button */
+  button {
+    width: 90px;
+    height: 40px;
+    font-size: 14px;
+  }
+  button:hover {
+    background-color: #813A4C;
+  }
+
+  /* Headline */
+  .headline {
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+
+  /* Stack / Skills / Languages */
+  .main-0-box {
+    padding: 30px 60px 35px;
+  } 
+  .main-0-box .headline {
+    margin: 15px 0;
+  }
+  .start {
+    padding-right: 9px;
+  }
+
+  /* Educations */
+  .main-1-box {
+    border-top-width: 25px;
+    border-bottom-width: 25px;
+  } 
+  .main-1-box .container {
+    padding: 0 25px 30px;
+  }
+  /* Education cards */
+  .card {
+    width: 210px;
+    height: 210px;
+  }
+  .card-bg {
+    border-radius: 10px;
+  }
+  /* Education fonts */
+  .education-name {
+    font-size: 21px;
+  }
+  .card-back .education-name {
+    padding: 16px;
+  }
+  .education-type {
+    font-size: 17px;
+  }
+  .education-grade {
+    font-size: 30px;
+  }
+  .education-date {
+    font-size: 26px;
+  }
+
+  /* Experience */
+  .main-2-box {
+    padding: 0;
+  }
+  .main-2-box .headline {
+    margin: 26px 0 30px;
+  }
+  /* Experience building */
+  .experience-container {
+    border-top-width: 20px;
+    border-bottom-width: 20px;
+    margin-bottom: 30px;
+  }
+  .experience-block {
+    height: 190px;
+  }
+  /* Experience image */
+  .experience-hover-image {
+    font-size: 30px;
+    line-height: 190px;
+  }
+  .experience-image:hover .experience-hover-image {
+    opacity: 0;
+  }
+  .experience-hover-image:hover
+  /* delete after release */
+  .nda {
+    letter-spacing: 14px;
+  }
+  .experience-image:hover .nda {
+    opacity: 1;
+  }
+  /*  */
+  /* Experience text */
+  [class*="experience-text-"]>p {
+    font-size: 21px;
+  }
+  .experience-text-0 > p {
+    right: 20%;
+  }
+  .experience-text-1 > p {
+    left: 28%;
+  }
+  .experience-text-0:hover > p {
+    right: -14%;
+  }
+  .experience-text-1:hover > p {
+    left: -5%;
+  }
+  [class*="experience-hover-text"] {
+    width: 200px;
+  }
+  [class*="experience-hover-text"] p {
+    font-size: 18px;
+  }
+
+  /* Footer */
+  footer {
+    height: 300px;
+    border-top-width: 25px;
+  }
+  footer p {
+    font-size: 26px;
+  }
+  .contact {
+    padding: 5px 18px;
+  }
+  .footer-bg-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+  }
+}
+
+/* Large Phone */     
+@media(max-width: 767px) {
+  /* Building */
+  .container {
+    max-width: 425px;
+  }
+
+  /* Fonts */
+  h2,h3 {
+    padding: 5px 7px;
+    font-size: 16px;
+  }
+
+  /* To-top arrow */
+  .arrow-button {
+    width: 60px;
+    height: 60px;
+    padding: 12px 16px;
+  }
+  
+  /* Copy success */
+  .copy-success-text {
+    font-size: 16px;
+    padding: 13px;
+    border-width: 3px;
+  }
+    
+  /* Header */
+  header {
+    height: 170px;
+    border-width: 18px;
+  }
+  .header-box {
+    padding: 0 25px;
+  }
+  header>.header-box>.row {
+    height: 120px;
+  }
+  
+  /* Header photo */
+  .photo-bg {
+    width: 146px;
+    border-radius: 25px 25px 0 0;
+  }
+  .photo {
+    inset: 18px 0 0 18px;
+    border-radius: 20px;
+    width: 110px;
+    height: 150px;
+  }
+
+  /* Header col 2,3 */
+  .header-2-large-phone-row {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .header-3-large-phone-col {
+    flex-direction: row;
+  }
+  .margin {
+    margin: 0;
+  }
+    
+  /* Slider */
+  .slider {
+    width: 80px;
+    height: 30px;
+  }
+  .slider .point {
+    top: 5px;
+    width: 20px;
+    height: 20px;
+  }
+  .slider-text-ua {
+    font-size: 14px;
+    left: 18%;
+  }
+  .slider-text-en {
+    font-size: 14px;
+  }
+  .slider-inactive {
+    right: calc(95% - 21px);
+  }
+      
+    
+  /* Contacts button */
+  button {
+    width: 80px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  /* Headline */
+  .headline {
+    width: 340px;
+    height: 55px;
+    border-radius: 15px;
+    margin: 25px 0;
+  }
+
+  /* Stack / Skills / Languages */
+  .main-0-box {
+    padding: 35px 42.5px;
+    flex-direction: column;
+  } 
+  .main-0-box .headline {
+    margin: 15px 0;
+  }
+  .start {
+    padding-right: 9px;
+  }
+
+  /* Educations */
+  .main-1-box {
+    border-top-width: 18px;
+    border-bottom-width: 18px;
+  } 
+  .main-1-box .container {
+    padding-bottom: 25px;
+  }
+  /* Education cards */
+  .card-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 320px;
+    height: 180px;
+    margin: 10px 0;
+  }
+  .card-bg {
+    border-radius: 10px;
+  }
+  /* Education fonts */
+  .education-name {
+    font-size: 24px;
+  }
+  .card-back .education-name {
+    padding: 10px;
+  }
+  .education-type {
+    font-size: 21px;
+  }
+  .education-grade {
+    font-size: 34px;
+  }
+  .education-date {
+    font-size: 27px;
+  }
+
+  /* Experience */
+  .main-2-box .headline {
+    margin: 21px 0;
+  }
+  /* Experience building */
+  .experience-container {
+    border-top-width: 14px;
+    border-bottom-width: 14px;
+    margin-bottom: 21px;
+  }
+  .experience-block {
+    height: 125px;
+  }
+  /* Experience image */
+  .experience-hover-image {
+    font-size: 21px;
+    line-height: 125px;
+  }
+  /* delete after release */
+  .nda {
+    letter-spacing: 6px;
+  }
+  [class*="experience-image-"] {
+    background-position: left;
+    background-size: cover;
+  }
+  /* Experience text */
+  [class*="experience-text-"]>p {
+    font-size: 12px;
+  }
+  .experience-text-0 > p {
+    right: 18%;
+  }
+  .experience-text-1 > p {
+    left: 28%;
+  }
+  .experience-text-0:hover > p {
+    right: -12%;
+  }
+  .experience-text-1:hover > p {
+    left: -2%;
+  }
+  [class*="experience-hover-text"] {
+    width: 100px;
+  }
+  [class*="experience-hover-text"] p {
+    font-size: 10px;
+  }
+
+  /* Footer */
+  footer {
+    height: 290px;
+    border-top-width: 18px;
+  }
+  footer p {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .contact {
+    padding: 7px 10px;
+  }
+  .footer-bg-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+  }
+}
+
+/* Small Phone */   
+@media(max-width: 424px) {
+  /* Building */
+  .container {
+    max-width: 320px;
+  }
+
+  /* Fonts */
+  h1 {
+    font-size: 23px;
+  }
+  h2,h3 {
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+
+  /* To-top arrow */
+  .arrow-button {
+    width: 55px;
+    height: 55px;
+    padding: 12px 14px;
+  }
+  
+  /* Copy success */
+  .copy-success-text {
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 7px;
+  }
+    
+  /* Header */
+  header {
+    height: 115px;
+    border-width: 15px;
+  }
+  .header-box {
+    padding: 0 15px;
+  }
+  header>.header-box>.row {
+    height: 80px;
+  }
+  
+  /* Header photo */
+  .photo-bg {
+    width: 120px;
+  }
+  .photo {
+    inset: 15px 0 0 15px;
+    width: 90px;
+    height: 110px;
+  }
+    
+  /* Slider */
+  .slider {
+    width: 70px;
+  }
+  .slider-text-ua {
+    font-size: 12px;
+  }
+  .slider-text-en {
+    font-size: 12px;
+  }
+      
+    
+  /* Contacts button */
+  button {
+    width: 70px;
+    font-size: 10px;
+  }
+  
+  /* Headline */
+  .headline {
+    width: 270px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 15px 0;
+  }
+
+  /* Stack / Skills / Languages */
+  .main-0-box {
+    padding: 35px 25px;
+  } 
+  .main-0-box .headline {
+    margin: 12px 0;
+  }
+  .start {
+    padding-right: 4px;
+  }
+
+  /* Educations */
+  .main-1-box {
+    border-top-width: 18px;
+    border-bottom-width: 18px;
+  } 
+  .main-1-box .container {
+    padding-bottom: 25px;
+  }
+  /* Education cards */
+  .card {
+    width: 220px;
+    height: 120px;
+  }
+  .card-bg {
+    border-radius: 7px;
+  }
+  .card-back {
+    padding: 15px;
+  }
+  /* Education fonts */
+  .education-name {
+    font-size: 18px;
+  }
+  .card-back .education-name {
+    padding: 4px;
+  }
+  .education-type {
+    font-size: 16px;
+  }
+  .education-grade {
+    font-size: 22px;
+  }
+  .education-date {
+    font-size: 18px;
+  }
+
+  /* Experience */
+  .main-2-box .headline {
+    margin: 15px 0;
+  }
+  /* Experience building */
+  .experience-container {
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    margin-bottom: 15px;
+  }
+  .experience-block {
+    height: 100px;
+  }
+  /* Experience image */
+  .experience-hover-image {
+    font-size: 14px;
+    letter-spacing: 4px;
+    line-height: 100px;
+  }
+  /* delete after release */
+  .nda {
+    letter-spacing: 4px;
+  }
+  /* Experience text */
+  [class*="experience-text-"]>p {
+    font-size: 8px;
+  }
+  .experience-text-0 > p {
+    right: 20%;
+  }
+  .experience-text-1 > p {
+    left: 30%;
+  }
+  .experience-text-0:hover > p {
+    right: -10%;
+  }
+  .experience-text-1:hover > p {
+    left: -1%;
+  }
+  [class*="experience-hover-text"] {
+    width: 80px;
+  }
+  [class*="experience-hover-text"] p {
+    font-size: 8px;
+  }
+
+  /* Footer */
+  footer {
+    height: 220px;
+    border-top-width: 15px;
+  }
+  footer p {
+    font-size: 11px;
+  }
+  .contact {
+    padding: 5px 6px;
+  }
+  .footer-bg-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+  }
 }
