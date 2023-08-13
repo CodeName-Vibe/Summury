@@ -83,7 +83,7 @@ let content = [
     "Self Education",
     "always",
 
-    "Experience",
+    "Portfolio",
     "VISIT",
     "University Practice",
     "1 month",
@@ -136,7 +136,7 @@ let content = [
     "Самоосвіта",
     "постійно",
     
-    "Досвід",
+    "Портфолiо",
     "ЗАЙТИ",
     "Універ. Практика",
     "1 місяць",
@@ -219,10 +219,10 @@ let cards = document.querySelectorAll(".card");
 let cardsFront = document.querySelectorAll(".card-front");
 let cardsBack = document.querySelectorAll(".card-back");
 let cardsBg = document.querySelectorAll(".card-bg");
-let experienceImages = document.querySelectorAll(".experience-hover-image");
-let experienceText = document.querySelectorAll(".experience-text");
-let experienceHoverText = document.querySelectorAll(".experience-hover-text")
-let experienceString = document.querySelectorAll(".experience-string")
+let experienceImages = document.querySelectorAll(".portfolio-hover-image");
+let experienceText = document.querySelectorAll(".portfolio-text");
+let experienceHoverText = document.querySelectorAll(".portfolio-hover-text")
+let experienceString = document.querySelectorAll(".portfolio-string")
 let footerIcons = document.querySelectorAll(".footer-bg-icon");
 let timerButtonActive = false;
 let timerCardsActive = false;
@@ -251,12 +251,12 @@ for(let i = 0; i < cards.length; i++) {
     }
   })
 }
-// 3. experience text hover to click system replacement
+// 3. portfolio text hover to click system replacement
 for (let i = 0; i < experienceText.length; i++) {
   experienceText[i].addEventListener("click", function() {
     if (window.innerWidth < 1024) {
-      experienceHoverText[i].classList.toggle("experience-text-hovered");
-      experienceString[i].classList.toggle(`experience-string-${i}-hovered`);
+      experienceHoverText[i].classList.toggle("portfolio-text-hovered");
+      experienceString[i].classList.toggle(`portfolio-string-${i}-hovered`);
     }
   })
 }
@@ -333,14 +333,14 @@ function smallScreenHoverReplacement() {
         }
       }
     }
-    // change experience image and text status if in sight
+    // change portfolio image and text status if in sight
     for (let i = 0; i < experienceImages.length; i++) {
       if (experienceImages[i].getBoundingClientRect().top < window.innerHeight/2 && experienceImages[i].getBoundingClientRect().bottom > window.innerHeight/2) {
-        experienceImages[i].classList.add("experience-image-hovered");
-        experienceText[i].classList.add(`experience-text-${i}-hovered`);
+        experienceImages[i].classList.add("portfolio-image-hovered");
+        experienceText[i].classList.add(`portfolio-text-${i}-hovered`);
       } else {
-        experienceImages[i].classList.remove("experience-image-hovered");
-        experienceText[i].classList.remove(`experience-text-${i}-hovered`);
+        experienceImages[i].classList.remove("portfolio-image-hovered");
+        experienceText[i].classList.remove(`portfolio-text-${i}-hovered`);
       }
     }
     // trigger function if footer is in sight
@@ -360,10 +360,10 @@ function smallScreenHoverReplacement() {
       cardsCliked[i] = !cardsCliked[i];
     }
     for (let i = 0; i < experienceImages.length; i++) {
-      experienceImages[i].classList.remove("experience-image-hovered");
-      experienceText[i].classList.remove(`experience-text-${i}-hovered`);
-      experienceHoverText[i].classList.remove("experience-text-hovered");
-      experienceString[i].classList.remove(`experience-string-${i}-hovered`);
+      experienceImages[i].classList.remove("portfolio-image-hovered");
+      experienceText[i].classList.remove(`portfolio-text-${i}-hovered`);
+      experienceHoverText[i].classList.remove("portfolio-text-hovered");
+      experienceString[i].classList.remove(`portfolio-string-${i}-hovered`);
     }
     for (let i = 0; i < footerIcons.length; i++) {
       footerIcons[i].classList.remove("icon-hovered");
